@@ -5,9 +5,9 @@ from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.views import View
 
+from ...mail_confirmation import send_confirmation_email
 from ..forms import NewUserForm
 from ..models import Confirmations
-from ...mail_confirmation import send_confirmation_email
 
 
 class RegistrationView(View):

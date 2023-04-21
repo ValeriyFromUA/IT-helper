@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Customer(AbstractUser):
-    city = models.CharField(max_length=200, null=True, default='Kyiv')
+    city = models.CharField(max_length=200, null=True, default="Kyiv")
     street = models.CharField(max_length=200, null=True)
     house = models.CharField(max_length=200, null=True)
     apartment = models.CharField(max_length=200, null=True)
@@ -24,8 +24,8 @@ class Category(models.Model):
 
 
 class Task(models.Model):
-    client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='task_client')
-    city = models.CharField(max_length=200, null=True, default='Kyiv')
+    client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="task_client")
+    city = models.CharField(max_length=200, null=True, default="Kyiv")
     street = models.CharField(max_length=200, null=True)
     house = models.CharField(max_length=200, null=True)
     apartment = models.CharField(max_length=200, null=True)
@@ -34,4 +34,4 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     in_work = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
-    employee = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, related_name='task_employee')
+    employee = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, related_name="task_employee")

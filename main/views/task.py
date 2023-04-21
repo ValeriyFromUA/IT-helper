@@ -1,13 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import View
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+
 from ..models import Task
 
 
 class TaskView(LoginRequiredMixin, View):
     def get(self, request, pk):
         task = get_object_or_404(Task, id=pk)
-        return render(request, 'task.html', context={'task': task})
+        return render(request, "task.html", context={"task": task})
 
     def post(self, request, pk):
         task = get_object_or_404(Task, id=pk)
@@ -21,4 +22,4 @@ class TaskView(LoginRequiredMixin, View):
         task.in_work = in_work
         task.save()
 
-        return redirect('task', pk=pk)
+        return redirect("task", pk=pk)
