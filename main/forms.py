@@ -1,18 +1,18 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Task, Category
+from .models import Customer, Task, Category
 
 
 class NewUserForm(UserCreationForm):
     class Meta:
-        model = User
+        model = Customer
         fields = ['username', 'email', 'password1', 'password2']
 
 
 class UserDataForm(ModelForm):
     class Meta:
-        model = User
+        model = Customer
         fields = ['city', 'street', 'house', 'apartment', 'phone']
 
 
@@ -27,7 +27,7 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ['description', 'category']
+        fields = ['city', 'street', 'house', 'apartment', 'description', 'category']
 
 
 class ConfirmationForm(forms.Form):

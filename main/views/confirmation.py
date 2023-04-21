@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.views import View
 
 from ..forms import ConfirmationForm
-from ..models import Confirmations, User
+from ..models import Confirmations, Customer
 
 
 class ConfirmView(View):
@@ -27,7 +27,7 @@ class ConfirmView(View):
             else:
                 form.add_error("confirmation_key", "invalid code")
         if "delete_wrong_user" in request.POST:
-            user = get_object_or_404(User, id=request.user.id)
+            user = get_object_or_404(Customer, id=request.user.id)
             user.delete()
             return redirect(reverse("register"))
         return render(request, self.template_name, {"form": form})

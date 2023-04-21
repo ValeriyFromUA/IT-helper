@@ -4,19 +4,19 @@ from django.urls import reverse
 from django.views import View
 
 from ..forms import UserDataForm
-from ..models import User
+from ..models import Customer
 
 
 class EditProfileView(LoginRequiredMixin, View):
     @staticmethod
     def get(request, pk):
-        user = get_object_or_404(User, id=pk)
+        user = get_object_or_404(Customer, id=pk)
         form = UserDataForm(instance=user)
         return render(request, "edit_profile.html", {"form": form})
 
     @staticmethod
     def post(request, pk):
-        user = get_object_or_404(User, id=pk)
+        user = get_object_or_404(Customer, id=pk)
         form = UserDataForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user.city = form.cleaned_data["city"]
