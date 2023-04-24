@@ -1,5 +1,9 @@
-from django.views.generic import ListView
+from django.shortcuts import render
+from django.views import View
 
 
-class HomeView(ListView):
-    template_name = "home.html"
+class HomeView(View):
+    @staticmethod
+    def get(request):
+        template_name = "home.html"
+        return render(request, template_name)
