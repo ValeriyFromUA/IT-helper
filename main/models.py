@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from datetime import datetime
 
 
 class Customer(AbstractUser):
@@ -11,6 +12,22 @@ class Customer(AbstractUser):
     is_confirmed = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = "Клієнт"
+        verbose_name_plural = "Клієнти"
+
+
+class Staff(Customer):
+    salary = models.IntegerField(null=True)
+    percent = models.CharField(max_length=100, null=True)
+    start_work = models.DateTimeField(auto_now_add=True)
+    faired = models.BooleanField(default=False)
+    end_work = models.DateTimeField(null=True)
+
+    class Meta:
+        verbose_name = "Працівник"
+        verbose_name_plural = "Працівники"
+
 
 class Confirmations(models.Model):
     user_ref = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -20,7 +37,11 @@ class Confirmations(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=200, null=False)
-    description = models.CharField(max_length=1000, null=True)
+    description = models.CharField(max_length=1000, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Категорія"
+        verbose_name_plural = "Категорії"
 
 
 class Task(models.Model):
@@ -34,4 +55,8 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     in_work = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
-    employee = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, related_name="task_employee")
+    employee = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, related_name="task_employee")
+
+    class Meta:
+        verbose_name = "Заявка"
+        verbose_name_plural = "Заявки"

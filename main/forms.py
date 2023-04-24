@@ -17,6 +17,12 @@ class UserDataForm(ModelForm):
         fields = ["city", "street", "house", "apartment", "phone"]
 
 
+class NewStaffForm(UserCreationForm):
+    class Meta:
+        model = Customer
+        fields = ["username", "email", "password1", "password2"]
+
+
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
