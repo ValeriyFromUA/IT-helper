@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from ..forms import FastTaskForm
 from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.views import View
+
+from ..forms import FastTaskForm
 
 
 class FastTaskView(View):

@@ -1,9 +1,11 @@
 from django.urls import path
+
 from .views import (
     AboutView,
     ConfirmView,
     DeleteTaskView,
     EditProfileView,
+    FastTaskView,
     HomeView,
     LoginView,
     LogoutView,
@@ -12,7 +14,6 @@ from .views import (
     StaffMainView,
     TaskView,
     UserProfileView,
-    FastTaskView,
 )
 
 urlpatterns = [
@@ -33,5 +34,4 @@ urlpatterns = [
     path("staff/registration/", RegistrationView.as_view(), name="staff_registration"),
     path("staff/login/", RegistrationView.as_view(), name="staff_login"),
     path("staff/task/<str:pk>/", TaskView.as_view(), name="task"),
-
 ]

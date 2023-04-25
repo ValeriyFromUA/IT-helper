@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Customer, Task, Staff
+from .models import Category, Customer, Staff, Task
 
 admin.site.register(Customer)
 admin.site.register(Task)
