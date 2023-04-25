@@ -14,7 +14,7 @@ class RegistrationView(View):
     @staticmethod
     def get(request):
         form = NewUserForm()
-        return render(request, "register.html", {"form": form})
+        return render(request, "registration.html", {"form": form})
 
     @staticmethod
     def post(request):
@@ -38,7 +38,7 @@ class RegistrationView(View):
             if "password2" in form.errors:
                 messages.error(request, "Passwords do not match")
 
-        return render(request, "register.html", {"form": form})
+        return render(request, "registration.html", {"form": form})
 
     def form_valid(self, form):
         user = form.save(commit=False)

@@ -6,7 +6,7 @@ from django.views import View
 from ..forms import NewStaffForm
 
 
-class RegistrationView(View):
+class StaffRegistrationView(View):
     @staticmethod
     def get(request):
         form = NewStaffForm()

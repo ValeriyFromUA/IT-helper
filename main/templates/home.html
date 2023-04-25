@@ -1,3 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}Головна сторінка{% endblock %}
-{% block content %}test{% endblock %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <br>
+        <a href="/fast_task" class="btn btn-secondary btn-lg">Викликати фахівця</a>
+    </div>
+
+</div>
+{% if messages %}
+<br>
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

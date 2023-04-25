@@ -45,8 +45,10 @@ class Category(models.Model):
 
 
 class Task(models.Model):
-    client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="task_client")
-    city = models.CharField(max_length=200, null=True, default="Kyiv")
+    client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="task_client", null=True)
+    anonim_user = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=200, null=True, default="Київ")
     street = models.CharField(max_length=200, null=True)
     house = models.CharField(max_length=200, null=True)
     apartment = models.CharField(max_length=200, null=True)
@@ -56,6 +58,7 @@ class Task(models.Model):
     in_work = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
     employee = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, related_name="task_employee")
+    price = models.IntegerField(null=True)
 
     class Meta:
         verbose_name = "Заявка"

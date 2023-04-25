@@ -11,6 +11,6 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        tasks = Task.objects.filter(user_id=self.object.id).order_by("-created_at")
+        tasks = Task.objects.filter(client=self.object.id).order_by("-created")
         context["tasks"] = tasks
         return context

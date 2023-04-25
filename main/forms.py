@@ -20,7 +20,7 @@ class UserDataForm(ModelForm):
 class NewStaffForm(UserCreationForm):
     class Meta:
         model = Customer
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2", "city", "street", "house", "apartment", "phone"]
 
 
 class CategoryForm(ModelForm):
@@ -34,7 +34,13 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ["city", "street", "house", "apartment", "description", "category"]
+        fields = ["city", "street", "house", "apartment", "description"]
+
+
+class FastTaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ["anonim_user", "phone", "city", "street", "house", "apartment", "description"]
 
 
 class ConfirmationForm(forms.Form):

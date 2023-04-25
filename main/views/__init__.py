@@ -10,3 +10,5 @@ from .staff_main import StaffMainView
 from .task import TaskView
 from .user_profile import UserProfileView
 from .user_reg import RegistrationView
+from .staff_reg import StaffRegistrationView
+from .fast_task import FastTaskView
