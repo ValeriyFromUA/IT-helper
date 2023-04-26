@@ -6,6 +6,7 @@
         <thead>
         <tr>
             <th scope="col">№ заявки</th>
+            <th scope="col">Дата створення</th>
             <th scope="col">Клієнт</th>
             <th scope="col">Телефон</th>
             <th scope="col">Адреса</th>
@@ -17,7 +18,11 @@
         {% for task in tasks %}
         <tr class="table-{% if task.in_work is False %}danger{% else %}warning{% endif %}">
             <th scope="row"><a href="/staff/task/{{ task.id }}">{{ task.id }}</a></th>
-            <td>{% if task.client is None %} {{ task.anonim_user }} {% else %} {{ task.client }} {% endif %}</td>
+            <td>{{ task.created }}</td>
+            <td><a href="{% if task.client is None %}#{% else %}/profile/{{ task.client.id}}{% endif %}/">
+                {% if task.client is None %} {{ task.anonim_user }} {% else %}
+                {{ task.client }} {% endif %}
+            </a></td>
             <td>{{ task.phone }}</td>
             <td>{{ task.city }}, {{ task.street }} {{ task.house }}, кв.{{ task.apartment }}</td>
             <td>{{ task.description }}</td>

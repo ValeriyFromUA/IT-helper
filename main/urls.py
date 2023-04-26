@@ -12,6 +12,7 @@ from .views import (
     NewTaskView,
     RegistrationView,
     StaffMainView,
+    StaffTaskView,
     TaskView,
     UserProfileView,
 )
@@ -33,5 +34,5 @@ urlpatterns = [
     path("profile/<str:pk>/", UserProfileView.as_view(), name="profile"),
     path("staff/registration/", RegistrationView.as_view(), name="staff_registration"),
     path("staff/login/", RegistrationView.as_view(), name="staff_login"),
-    path("staff/task/<str:pk>/", TaskView.as_view(), name="task"),
+    path("staff/task/<str:pk>/", StaffTaskView.as_view(), name="staff_task"),
 ]

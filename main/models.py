@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -59,7 +57,7 @@ class Task(models.Model):
     in_work = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
     employee = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, related_name="task_employee")
-    price = models.IntegerField(null=True)
+    price = models.IntegerField(null=True, default=0)
 
     class Meta:
         verbose_name = "Заявка"

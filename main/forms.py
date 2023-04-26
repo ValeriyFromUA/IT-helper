@@ -43,5 +43,11 @@ class FastTaskForm(ModelForm):
         fields = ["anonim_user", "phone", "city", "street", "house", "apartment", "description"]
 
 
+class FullTaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ["phone", "city", "street", "house", "apartment", "description", "in_work", "finished", "price"]
+
+
 class ConfirmationForm(forms.Form):
     confirmation_key = forms.CharField(label="confirmation key", max_length=50)
