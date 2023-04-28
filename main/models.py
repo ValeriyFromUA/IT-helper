@@ -34,15 +34,6 @@ class Confirmations(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=200, null=False)
-    description = models.CharField(max_length=1000, null=True, blank=True)
-
-    class Meta:
-        verbose_name = "Категорія"
-        verbose_name_plural = "Категорії"
-
-
 class Task(models.Model):
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="task_client", null=True)
     anonim_user = models.CharField(max_length=200, null=True)
@@ -51,7 +42,6 @@ class Task(models.Model):
     street = models.CharField(max_length=200, null=True)
     house = models.CharField(max_length=200, null=True)
     apartment = models.CharField(max_length=200, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     description = models.CharField(max_length=1000, null=False)
     created = models.DateTimeField(auto_now_add=True)
     in_work = models.BooleanField(default=False)

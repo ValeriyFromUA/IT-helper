@@ -19,15 +19,16 @@ class ConfirmView(View):
             confirmation_key = form.cleaned_data["confirmation_key"]
             confirmation = Confirmations.objects.filter(confirmation_key=confirmation_key).first()
             if confirmation is not None:
-                user = confirmation.user_id
-                user.is_confirmed = True
-                user.save()
+                customer = confirmation.user_ref
+                customer.is_confirmed = True
+                customer.save()
                 confirmation.delete()
-                return redirect(reverse("edit_profile", args=[user.id]))
+                print(customer.id)
+                return redirect(reverse("edit_profile", args=[customer.id]))
             else:
                 form.add_error("confirmation_key", "invalid code")
         if "delete_wrong_user" in request.POST:
-            user = get_object_or_404(Customer, id=request.user.id)
-            user.delete()
-            return redirect(reverse("register"))
+            customer = get_object_or_404(Customer, id=request.customer.id)
+            customer.delete()
+            return redirect(reverse("registration"))
         return render(request, self.template_name, {"form": form})

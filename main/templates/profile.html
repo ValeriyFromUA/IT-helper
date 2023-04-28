@@ -1,3 +1,43 @@
 {% extends 'base.html' %}
 {% block title %}Мій профіль{% endblock %}
-{% block content %}мій профіль{% endblock %}
+{% block content %}
+<div class="container">
+    <h4>{{customer.username}}</h4>
+    <h5>{{ customer.city }}, {{ customer.street }} {{ customer.house }}, кв.{{ customer.apartment }}</h5>
+</div>
+<br>
+
+<div class="container">
+    <h4> Мої заявки: </h4>
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">№ заявки</th>
+                <th scope="col">Дата створення</th>
+                <th scope="col">Контактний телефон</th>
+                <th scope="col">Адреса</th>
+                <th scope="col">Опис заявки</th>
+                <th scope="col">Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+            <tr class="table-{% if task.in_work is False %}warning{% else %}success{% endif %}">
+                <th scope="row">{{ task.id }}</th>
+                <td>{{ task.created }}</td>
+                <td>{{ task.phone }}</td>
+                <td>{{ task.city }}, {{ task.street }} {{ task.house }}, кв.{{ task.apartment }}</td>
+                <td>{{ task.description }}</td>
+                <td>{% if task.finished is True %} <img src="/static/images/done_logo.png" alt="Виконано" width="30"
+                                                        height="30"> {% else %} {% if task.in_work is True %} В
+                    роботі {% else %}
+                    очікує {% endif %} {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -24,7 +24,7 @@ class RegistrationView(View):
             user.save()
             login(request, user)
             key = randrange(10000, 99999)
-            confirmation = Confirmations(user_id=user, confirmation_key=key)
+            confirmation = Confirmations(user_ref=user, confirmation_key=key)
             confirmation.save()
             send_confirmation_email(user.email, key)
             return redirect("confirm")

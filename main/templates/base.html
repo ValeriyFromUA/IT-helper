@@ -22,11 +22,15 @@
                     <a class="nav-link" href="/home/">Головна сторінка<span class="sr-only">(current)</span></a>
                 </li>
                 {% if user.is_authenticated %}
+                <li class="nav-link px-2 {% if 'new_task' in request.path %}disabled{% else %}active{% endif %}">
+                    <a class="nav-link" href="/new_task">Викликати фахівця<span
+                            class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-link px-2 {% if 'profile' in request.path %}disabled{% else %}active{% endif %}">
                     <a class="nav-link" href="/profile/{{request.user.id}}">Мій профіль<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-link px-2 text-white">
+                <li class="nav-link px-2 {% if 'logout' in request.path %}disabled{% else %}active{% endif %}">
                     <a class="nav-link" href="{% url 'logout' %}">Вийти<span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}

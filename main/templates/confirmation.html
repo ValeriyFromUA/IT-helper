@@ -1,3 +1,37 @@
 {% extends 'base.html' %}
 {% block title %}Підтвердіть свою пошту{% endblock %}
-{% block content %}Підтвердження{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <br>
+            <br>
+            {% if form.errors %}
+            <p class="text-danger">Error, check:</p>
+            <ul>
+                {% for error in form.errors %}
+                <li class="text-danger">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="confirmation_key">Your email address must be verified to use this site</label>
+                    <label for="confirmation_key">A verification key has been sent to your email address, enter the code
+                        here:</label>
+                    <input type="text" id="confirmation_key" name="confirmation_key" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-dark">Confirm</button>
+                <button type="submit" id="delete_wrong_user" name="delete_wrong_user" class="btn btn-danger">Change my
+                    data
+                </button>
+            </form>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

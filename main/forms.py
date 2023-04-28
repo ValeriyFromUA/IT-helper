@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from .models import Category, Customer, Task
+from .models import Customer, Task
 
 
 class NewUserForm(UserCreationForm):
@@ -23,18 +23,10 @@ class NewStaffForm(UserCreationForm):
         fields = ["username", "email", "password1", "password2", "city", "street", "house", "apartment", "phone"]
 
 
-class CategoryForm(ModelForm):
-    class Meta:
-        model = Category
-        fields = ["name", "description"]
-
-
 class TaskForm(ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
-
     class Meta:
         model = Task
-        fields = ["city", "street", "house", "apartment", "description"]
+        fields = ["city", "street", "phone", "house", "apartment", "description"]
 
 
 class FastTaskForm(ModelForm):

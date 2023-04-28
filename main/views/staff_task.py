@@ -1,9 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views import View
 from django.urls import reverse
-from ..models import Task
+from django.views import View
+
 from ..forms import FullTaskForm
+from ..models import Task
 
 
 class StaffTaskView(LoginRequiredMixin, View):
@@ -20,7 +22,7 @@ class StaffTaskView(LoginRequiredMixin, View):
 
         if not form.is_valid():
 
-            print(form.errors)
+            messages.error(request, "Невірно введені данні")
         else:
             task.phone = form.cleaned_data["phone"]
             task.city = form.cleaned_data["city"]
