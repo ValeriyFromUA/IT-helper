@@ -5,6 +5,7 @@ from django.views import View
 
 from ..forms import TaskForm
 from ..models import Customer
+from ..telegram_bot import send_telegram_message, make_text_for_sending
 
 
 class NewTaskView(View):
@@ -22,6 +23,9 @@ class NewTaskView(View):
             task = form.save(commit=False)
             task.client = request.user
             task.save()
+            send_telegram_message(
+                make_text_for_sending(task.created, task.anonim_user, task.phone, task.city, task.street, task.house,
+                                      task.apartment, task.description))
             return redirect(reverse("profile", args=[request.user.id]))
 
         return render(request, "new_task.html", {"form": form})
