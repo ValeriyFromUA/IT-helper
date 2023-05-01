@@ -11,7 +11,7 @@ bot = telebot.TeleBot(TOKEN)
 
 
 def make_text_for_sending(time, name, phone, city, street, house, apartment, description):
-    return f"Заявка від {time},\n Клієнт: {name}, {phone}, \n Адреса: м.{city}, {street} {house}, кв.{apartment}, \n Опис: {description}"
+    return f"Заявка від {str(time)[:19]},\n Клієнт: {name}, {phone}, \n Адреса: м.{city}, {street} {house}, кв.{apartment}, \n Опис: {description}"
 
 
 import requests
