@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Адіміністрування заявки{% endblock %}
+{% block content %}
+<div class="container">
+    <form class="form-group" method="POST" action="">
+        {% csrf_token %}
+        {% if form.errors %}
+        {% endif %}
+
+        <p>{{ form.instance.client }}/{{ form.instance.anonim_user }}</p>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="text" class="form-control" id="phone" name="phone" maxlength="199" required
+                       value="{{ form.instance.phone }}">
+            </div>
+            <div class="form-group">
+                <label for="city">Місто:</label>
+                <input type="text" class="form-control" id="city" name="city" maxlength="199" required
+                       value="{{ form.instance.city }}">
+            </div>
+            <div class="form-group">
+                <label for="street">Вулиця:</label>
+                <input type="text" class="form-control" id="street" name="street" maxlength="199" required
+                       value="{{ form.instance.street }}">
+            </div>
+            <div class="form-group">
+                <label for="house">Номер будинку:</label>
+                <input type="text" class="form-control" id="house" name="house" maxlength="199" required
+                       value="{{ form.instance.house }}">
+            </div>
+            <div class="form-group">
+                <label for="apartment">Квартира:</label>
+                <input type="text" class="form-control" id="apartment" name="apartment" maxlength="199" required
+                       value="{{ form.instance.apartment }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Опишіть, яку роботу потрібно виконати:</label>
+                <input type="text" class="form-control" id="description" name="description" maxlength="999" required
+                       value="{{ form.instance.description }}">
+            </div>
+            <div class="form-group">
+                <label for="in_work">В роботі:</label>
+                <input type="checkbox" class="form-control" id="in_work" name="in_work" {% if form.instance.in_work %}
+                       checked {% endif %}>
+            </div>
+            <div class="form-group">
+                <label for="finished">Виконано:</label>
+                <input type="checkbox" class="form-control" id="finished" name="finished"
+                       {% if form.instance.finished %}
+                       checked {% endif %}>
+            </div>
+            <div class="form-group">
+                <label for="price">Ціна:</label>
+                <input type="number" class="form-control" id="price" name="price" min="0" required
+                       value="{{ form.instance.price }}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Редагувати заявку</button>
+    </form>
+
+</div>
+{% endblock %}

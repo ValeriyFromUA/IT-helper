@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        language_version: python3.10
+        args: [ --max-line-length=120, --exclude=__init__.py ]
+        stages: [ commit, push ]
+
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        language_version: python3.10
+        stages: [ commit, push ]
+        args: [ "--profile", "black" ]
+
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+        args: [ --line-length=120 ]
