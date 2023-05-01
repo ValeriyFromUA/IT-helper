@@ -24,7 +24,7 @@ class NewTaskView(View):
             task.client = request.user
             task.save()
             send_telegram_message(
-                make_text_for_sending(task.created, task.anonim_user, task.phone, task.city, task.street, task.house,
+                make_text_for_sending(task.created, task.client, task.phone, task.city, task.street, task.house,
                                       task.apartment, task.description))
             return redirect(reverse("profile", args=[request.user.id]))
 
