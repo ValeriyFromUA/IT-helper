@@ -19,7 +19,7 @@ class StaffRegistrationView(View):
             user = form.save(commit=False)
             user.save()
             login(request, user)
-            return redirect("confirm")
+            return redirect("confirm_staff")
         else:
             if "email" in form.errors:
                 messages.error(request, "Invalid email address")
@@ -30,7 +30,7 @@ class StaffRegistrationView(View):
             if "password2" in form.errors:
                 messages.error(request, "Passwords do not match")
 
-        return render(request, "register.html", {"form": form})
+        return render(request, "staff_registration.html", {"form": form})
 
     def form_valid(self, form):
         user = form.save(commit=False)

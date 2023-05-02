@@ -10,6 +10,6 @@ from .new_task import NewTaskView
 from .staff_main import StaffMainView
 from .staff_reg import StaffRegistrationView
 from .staff_task import StaffTaskView
-from .task import TaskView
 from .user_profile import UserProfileView
 from .user_reg import RegistrationView
+from .confirmation_staff import ConfirmStaffView

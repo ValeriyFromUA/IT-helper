@@ -17,11 +17,10 @@ class Customer(AbstractUser):
 
 
 class Staff(Customer):
-    salary = models.IntegerField(null=True)
-    percent = models.CharField(max_length=100, null=True)
+    salary = models.IntegerField(null=True, default=0)
+    percent = models.CharField(max_length=100, null=True, default=0)
     start_work = models.DateTimeField(auto_now_add=True)
     faired = models.BooleanField(default=False)
-    end_work = models.DateTimeField(null=True)
 
     class Meta:
         verbose_name = "Працівник"

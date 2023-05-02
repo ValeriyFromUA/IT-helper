@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "helper.middleware.ConfirmUserMiddleware",
-    "helper.middleware.ConfirmStaffMiddleware",
+
 ]
 
 ROOT_URLCONF = "helper.urls"
