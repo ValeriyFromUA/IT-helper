@@ -18,14 +18,14 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="confirmation_key">Your email address must be verified to use this site</label>
-                    <label for="confirmation_key">A verification key has been sent to your email address, enter the code
-                        here:</label>
+                    <label for="confirmation_key">Вашу електронну пошту потрібно підтвердити</label>
+                    <label for="confirmation_key">Код підтвердження вислано на вказану Вами пошту, введіть його в поле
+                        нижче:</label>
                     <input type="text" id="confirmation_key" name="confirmation_key" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-dark">Confirm</button>
-                <button type="submit" id="delete_wrong_user" name="delete_wrong_user" class="btn btn-danger">Change my
-                    data
+                <button type="submit" class="btn btn-dark">Підтвердити</button>
+                <button type="submit" id="delete_wrong_user" name="delete_wrong_user" class="btn btn-danger">Змінити мої
+                    данні
                 </button>
             </form>
             <br>
