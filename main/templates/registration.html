@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Registration</h2>
+            <br>
+            <h2>Створення профілю:</h2>
 
             <br>
             <form method="POST">
@@ -18,7 +19,7 @@
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="username">Nickname:</label>
+                    <label for="username">Нікнейм:</label>
                     <input type="text" class="form-control{% if form.username.errors %} is-invalid{% endif %}"
                            id="username" name="username" required>
                     {% for error in form.username.errors %}
@@ -26,30 +27,28 @@
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="password1">Password:</label>
+                    <label for="password1">Вигадайте пароль:</label>
                     <input type="password" class="form-control{% if form.password1.errors %} is-invalid{% endif %}"
                            id="password1" name="password1" required>
                     {% for error in form.password1.errors %}
                     <div class="invalid-feedback">{{ error }}</div>
                     {% endfor %}
                     <small id="passwordHelpBlock" class="form-text text-muted">
-                        Your password must be at least 8 characters long, contain at least one uppercase letter, one
-                        lowercase letter, and one digit, and should not be too similar to your email address or
-                        username.
+                        Пароль має складатися, як мінімум, з 8 символів, а також містити латинські букви та цифри.
                     </small>
                 </div>
                 <div class="form-group">
-                    <label for="password2">Confirm password:</label>
+                    <label for="password2">Продублюйте пароль:</label>
                     <input type="password" class="form-control{% if form.password2.errors %} is-invalid{% endif %}"
                            id="password2" name="password2" required>
                     {% for error in form.password2.errors %}
                     <div class="invalid-feedback">{{ error }}</div>
                     {% endfor %}
                     <small id="password2HelpBlock" class="form-text text-muted">
-                        Please enter the same password as above.
+                        обов'язково запам'ятайте Ваш пароль, відновити його не буде можливості.
                     </small>
                 </div>
-                <button type="submit" class="btn btn-dark">Create</button>
+                <button type="submit" class="btn btn-dark">Створити акаунт</button>
             </form>
             <br>
         </div>

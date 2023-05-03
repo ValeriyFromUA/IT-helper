@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from .models import Customer, Task
+from .models import Customer, Task, Staff
 
 
 class NewUserForm(UserCreationForm):
@@ -19,7 +19,7 @@ class UserDataForm(ModelForm):
 
 class NewStaffForm(UserCreationForm):
     class Meta:
-        model = Customer
+        model = Staff
         fields = ["username", "email", "password1", "password2", "city", "street", "house", "apartment", "phone"]
 
 
