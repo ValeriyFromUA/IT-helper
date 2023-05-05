@@ -16,6 +16,9 @@ from .views import (
     UserProfileView,
     StaffRegistrationView,
     ConfirmStaffView,
+    PriceView,
+    NewPriceView,
+
 )
 
 urlpatterns = [
@@ -35,4 +38,7 @@ urlpatterns = [
     path("staff/registration/", StaffRegistrationView.as_view(), name="staff_registration"),
     path("staff/task/<str:pk>/", StaffTaskView.as_view(), name="staff_task"),
     path("confirm_staff/", ConfirmStaffView.as_view(), name="confirm_staff"),
+    path("price/", PriceView.as_view(), name="price"),
+    path("new_price/", NewPriceView.as_view(), name="new_price"),
+
 ]

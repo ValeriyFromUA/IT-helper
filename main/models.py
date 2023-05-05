@@ -51,3 +51,24 @@ class Task(models.Model):
     class Meta:
         verbose_name = "Заявка"
         verbose_name_plural = "Заявки"
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = "Категорія"
+        verbose_name_plural = "Категорії"
+
+    def __str__(self):
+        return self.name
+
+
+class Price(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="price_category")
+    description = models.CharField(max_length=1000)
+    price = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Прайс"
+        verbose_name_plural = "Прайс"

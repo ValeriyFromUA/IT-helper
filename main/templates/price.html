@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Послуги{% endblock %}
+{% block content %}
+<div class="container">
+    {% if user.is_staff %}
+    <br>
+    <a class="btn btn-warning" href="{% url 'new_price' %}">Додати послугу</a>
+    <br>
+    <br>
+    {% endif %}
+    <h4> Послуги: </h4>
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Категорія</th>
+                <th scope="col">Опис</th>
+                <th scope="col">Ціна</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for service in price %}
+            <tr class="table-{% if task.in_work is False %}warning{% else %}success{% endif %}">
+                <th scope="row">{{ service.category }}</th>
+                <td>{{ service.description }}</td>
+                <td>{{ service.price }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

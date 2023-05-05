@@ -13,3 +13,5 @@ from .staff_task import StaffTaskView
 from .user_profile import UserProfileView
 from .user_reg import RegistrationView
 from .confirmation_staff import ConfirmStaffView
+from .price import PriceView
+from .new_price import NewPriceView

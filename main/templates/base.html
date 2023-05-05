@@ -2,60 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="/home/">
-            <img src="/static/images/it-helper.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
 
-        </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
-                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<div class="container">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a class="navbar-brand" href="/home/">
+                    <img src="/static/images/it-helper.png" alt="" width="30" height="30"
+                         class="d-inline-block align-text-top">
 
-        <div class="collapse navbar-collapse" id="navbarsExample07">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-link px-2 {% if 'home' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="/home/">Головна сторінка<span class="sr-only">(current)</span></a>
-                </li>
-                {% if user.is_authenticated %}
-                <li class="nav-link px-2 {% if 'new_task' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="/new_task">Викликати фахівця<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-link px-2 {% if 'profile' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="/profile/{{request.user.id}}">Мій профіль<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-link px-2 {% if 'logout' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'logout' %}">Вийти<span class="sr-only">(current)</span></a>
-                </li>
-                {% else %}
-                <li class="nav-link px-2 {% if 'registration' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'registration' %}">Створити акаунт<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-link px-2 {% if 'login' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'login' %}">Увійти<span class="sr-only">(current)</span></a>
-                </li>
-                {% endif %}
-                {% if user.is_staff %}
-                <li class="nav-link px-2 {% if 'main' in request.path %}disabled{% else %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'staff_main' %}">Кабінет працівника<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                {% endif %}
-            </ul>
+                </a>
+
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a class="nav-link px-2 {% if 'home' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="/home/">Головна сторінка<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {% if 'price' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="/price">Послуги<span class="sr-only">(current)</span></a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="nav-link px-2 {% if 'new_task' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="/new_task">Викликати фахівця<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {% if 'profile' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="/profile/{{request.user.id}}">Мій профіль<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {% if 'logout' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'logout' %}">Вийти<span class="sr-only">(current)</span></a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="nav-link px-2 {% if 'registration' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'registration' %}">Створити акаунт<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {% if 'login' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'login' %}">Увійти<span class="sr-only">(current)</span></a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_staff %}
+                    <li>
+                        <a class="nav-link px-2 {% if 'main' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'staff_main' %}">Кабінет працівника<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+
+            </div>
         </div>
-    </div>
-</nav>
+    </header>
+</div>
+
 {% block content %} {% endblock %}
 </body>
 </html>
