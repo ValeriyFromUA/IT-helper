@@ -1,8 +1,7 @@
 from django.shortcuts import redirect
 
-ALLOWED_URLS = ["/confirm/", "/login/", "/logout/", "/home/", "", "/staff/registration/", "/staff/login/",
-                "/registration/", "/confirm_staff/", "/admin/", "/fast_task/"]
-ONLY_STAFF_URLS = ["/staff/task/", "/staff/main/"]
+NOT_ALLOWED_URLS = ["/edit_profile/", "/new_task/", "/staff/task/", "/staff/main/", "/new_price/"]
+ONLY_STAFF_URLS = ["/staff/task/", "/staff/main/", "/new_price/"]
 
 
 class ConfirmUserMiddleware:
@@ -10,15 +9,15 @@ class ConfirmUserMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        # print(request.path)
         if request.user.is_authenticated:
             if not request.user.is_confirmed:
-                if request.path not in ALLOWED_URLS:
+                if request.path in NOT_ALLOWED_URLS:
                     return redirect("/confirm/")
-            elif not request.user.is_staff:
-                if request.path in ONLY_STAFF_URLS:
+                elif request.path in ONLY_STAFF_URLS:
                     return redirect("/home/")
-        else:
-            if request.path not in ALLOWED_URLS:
+        if not request.user.is_staff:
+            if request.path in ONLY_STAFF_URLS:
                 return redirect("/home/")
         response = self.get_response(request)
         return response

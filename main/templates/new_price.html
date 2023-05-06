@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Додати послуги{% endblock %}
+{% block content %}
+<div class="container">
+    <form class="form-group" method="POST" action="">
+        {% csrf_token %}
+        {{ price_set.management_form }}
+        {% for form in price_set %}
+        <div class="form-group">
+            {{ form.category}}
+        </div>
+        <div class="form-group">
+            {{ form.description}}
+        </div>
+        <div class="form-group">
+            {{ form.price}}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-dark">Зберегти</button>
+    </form>
+
+</div>
+
+
+{% endblock %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from .models import Customer, Task, Staff
+from .models import Customer, Task, Staff, Price, Category
 
 
 class NewUserForm(UserCreationForm):
@@ -43,3 +43,19 @@ class FullTaskForm(ModelForm):
 
 class ConfirmationForm(forms.Form):
     confirmation_key = forms.CharField(label="confirmation key", max_length=50)
+
+
+class PriceForm(forms.ModelForm):
+    class Meta:
+        model = Price
+        fields = ['category', 'description', 'price']
+        widgets = {
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+            'price': forms.TextInput(attrs={'class': 'form-control'})
+        }
+    
+    category = forms.ModelChoiceField(
+        queryset=Category.objects.all(),
+        empty_label='Виберіть категорію'
+    )
