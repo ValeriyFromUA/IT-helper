@@ -57,6 +57,16 @@
                            href="{% url 'login' %}">Увійти<span class="sr-only">(current)</span></a>
                     </li>
                     {% endif %}
+                    <li>
+                        <a class="nav-link px-2 {% if 'about' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'about' %}">Про нас<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link px-2 {% if 'callback' in request.path %}disabled{% else %}text-white{% endif %}"
+                           href="{% url 'callback' %}">Замовити дзвінок<span
+                                class="sr-only">(current)</span></a>
+                    </li>
                     {% if user.is_staff %}
                     <li>
                         <a class="nav-link px-2 {% if 'main' in request.path %}disabled{% else %}text-white{% endif %}"
@@ -64,6 +74,7 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                     {% endif %}
+
                 </ul>
 
 

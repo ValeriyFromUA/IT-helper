@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Створення заявки{% endblock %}
+{% block content %}
+<div class="container">
+    <form class="form-group" method="POST" action="">
+        {% csrf_token %}
+        {% if form.errors %}
+        {% endif %}
+
+        <div class="form-group">
+            <div class="form-group">
+                <label for="name">Ваше ім'я:</label>
+                <input type="text" class="form-control" id="name" name="name" maxlength="199" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="text" class="form-control" id="phone" name="phone" maxlength="199" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Подати заявку</button>
+    </form>
+
+</div>
+
+{% endblock %}

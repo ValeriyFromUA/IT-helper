@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from .models import Customer, Task, Staff, Price, Category
+from .models import Customer, Task, Staff, Price, Category, CallBack
 
 
 class NewUserForm(UserCreationForm):
@@ -54,8 +54,14 @@ class PriceForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.TextInput(attrs={'class': 'form-control'})
         }
-    
+
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
         empty_label='Виберіть категорію'
     )
+
+
+class CallBackForm(ModelForm):
+    class Meta:
+        model = CallBack
+        fields = ["name", "phone"]

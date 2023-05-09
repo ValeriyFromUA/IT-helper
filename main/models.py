@@ -72,3 +72,12 @@ class Price(models.Model):
     class Meta:
         verbose_name = "Прайс"
         verbose_name_plural = "Прайс"
+
+
+class CallBack(models.Model):
+    name = models.CharField(max_length=200, default="Анонімний користувач")
+    phone = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = "Зворотній дзвінок"
+        verbose_name_plural = "Зворотні дзвінки"
