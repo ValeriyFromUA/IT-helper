@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import ListView
+from ..models import Feedback
 
 
-class HomeView(View):
-    @staticmethod
-    def get(request):
-        return render(request, "home.html")
+class HomeView(ListView):
+    template_name = "home.html"
+    model = Feedback
+    context_object_name = "comments"
+    queryset = Feedback.objects.order_by("-id")[:3]

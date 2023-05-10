@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Відгуки{% endblock %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <br>
+        <a href="/fast_task" class="btn btn-secondary btn-lg">Викликати фахівця</a>
+        {% if request.user.is_authenticated %}
+        <a href="/feedback" class="btn btn-secondary btn-lg">Оцінити нас</a>
+        {% endif %}
+    </div>
+
+</div>
+<br>
+
+<div class="container">
+    <h4>Відгуки наших клієнтів</h4>
+    {% for comment in comments %}
+    <div class="alert alert-{% if  comment.rating >= 4%}success{% else %}warning{% endif %}" role="alert">
+        <p><strong>{{ comment.client.user_name }}</strong></p>
+        <p><small>Оцінка: {{ comment.rating }}/5</small></p>
+        <p>{{ comment.comment }}</p>
+    </div>
+    {% endfor %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="{{ page_obj.previous_page_number }}" tabindex="-1"> << Попередня </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="?page=1">В початок</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">В кінець</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Наступна >> </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
+{% endblock %}

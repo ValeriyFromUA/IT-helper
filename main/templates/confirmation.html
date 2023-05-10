@@ -18,15 +18,21 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="confirmation_key">Вашу електронну пошту потрібно підтвердити</label>
+                    <label for="confirmation_key">Вашу електронну пошту {{ request.user.email }} потрібно
+                        підтвердити</label>
                     <label for="confirmation_key">Код підтвердження вислано на вказану Вами пошту, введіть його в поле
                         нижче:</label>
                     <input type="text" id="confirmation_key" name="confirmation_key" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-dark">Підтвердити</button>
-                <button type="submit" id="delete_wrong_user" name="delete_wrong_user" class="btn btn-danger">Змінити мої
-                    данні
-                </button>
+                <p><strong>Ваш логін: {{ request.user.username }}</strong></p>
+                <label><strong>Логін створено автоматично - це Ваш номер телефону</strong></label>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-dark">Підтвердити</button>
+                    <button type="submit" id="delete_wrong_user" name="delete_wrong_user" class="btn btn-danger">Змінити
+                        мої
+                        данні
+                    </button>
+                </div>
             </form>
             <br>
 

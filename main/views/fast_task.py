@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
 
+from ..formatter import format_phone
 from ..forms import FastTaskForm
 from ..telegram_bot import send_telegram_message, make_text_for_sending
 
@@ -17,6 +18,7 @@ class FastTaskView(View):
             task = form.save(commit=False)
             task.save()
             send_telegram_message(
-                make_text_for_sending(task.created, task.anonim_user, task.phone, task.city, task.street, task.house,
+                make_text_for_sending(task.created, task.anonim_user, format_phone(task.phone), task.city, task.street,
+                                      task.house,
                                       task.apartment, task.description))
             return redirect("home")
