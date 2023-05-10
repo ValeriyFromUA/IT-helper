@@ -23,7 +23,7 @@ class EditProfileView(LoginRequiredMixin, View):
             customer.street = form.cleaned_data["street"]
             customer.house = form.cleaned_data["house"]
             customer.apartment = form.cleaned_data["apartment"]
-            customer.phone = form.cleaned_data["phone"]
+            customer.user_name = form.cleaned_data["user_name"]
             customer.save()
             return redirect(reverse("profile", args=[pk]))
         return render(request, "edit_profile.html", {"form": form})

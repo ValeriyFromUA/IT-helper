@@ -18,6 +18,9 @@ from .views import (
     ConfirmStaffView,
     PriceView,
     NewPriceView,
+    CallBackView,
+    FeedbackView,
+    CommentsView,
 
 )
 
@@ -40,5 +43,8 @@ urlpatterns = [
     path("confirm_staff/", ConfirmStaffView.as_view(), name="confirm_staff"),
     path("price/", PriceView.as_view(), name="price"),
     path("new_price/", NewPriceView.as_view(), name="new_price"),
+    path("callback/", CallBackView.as_view(), name="callback"),
+    path("feedback/", FeedbackView.as_view(), name="feedback"),
+    path("comments/", CommentsView.as_view(), name="comments"),
 
 ]

@@ -1,8 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Customer(AbstractUser):
+    user_name = models.CharField(max_length=200, null=True, default='Анонім')
     city = models.CharField(max_length=200, null=True, default="Kyiv")
     street = models.CharField(max_length=200, null=True)
     house = models.CharField(max_length=200, null=True)
@@ -72,3 +74,29 @@ class Price(models.Model):
     class Meta:
         verbose_name = "Прайс"
         verbose_name_plural = "Прайс"
+
+
+class CallBack(models.Model):
+    name = models.CharField(max_length=200, default="Анонімний користувач")
+    phone = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = "Зворотній дзвінок"
+        verbose_name_plural = "Зворотні дзвінки"
+
+
+class Feedback(models.Model):
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5')
+    )
+    client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, related_name="feedback")
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], choices=RATING_CHOICES)
+    comment = models.CharField(max_length=1000, null=True, default='')
+
+    class Meta:
+        verbose_name = "Відгук"
+        verbose_name_plural = "Відгуки"

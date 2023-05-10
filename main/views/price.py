@@ -8,3 +8,4 @@ class PriceView(ListView):
     model = Price
     template_name = "price.html"
     context_object_name = "price"
+    ordering = ["category"]

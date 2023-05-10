@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.views import View
 
+from ..formatter import format_phone, username_formatter
 from ..forms import NewUserForm
 from ..mail_confirmation import send_confirmation_email
 from ..models import Confirmations
@@ -21,6 +22,8 @@ class RegistrationView(View):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.phone = format_phone(user.phone)
+            user.username = username_formatter(user.phone)
             user.save()
             login(request, user)
             key = randrange(10000, 99999)
@@ -32,7 +35,7 @@ class RegistrationView(View):
             if "email" in form.errors:
                 messages.error(request, "Invalid email address")
             if "username" in form.errors:
-                messages.error(request, "Invalid username")
+                messages.error(request, "Invalid phone")
             if "password1" in form.errors:
                 messages.error(request, "Invalid password")
             if "password2" in form.errors:

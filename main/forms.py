@@ -2,19 +2,19 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from .models import Customer, Task, Staff, Price, Category
+from .models import Customer, Task, Staff, Price, Category, CallBack, Feedback
 
 
 class NewUserForm(UserCreationForm):
     class Meta:
         model = Customer
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["phone", "email", "password1", "password2"]
 
 
 class UserDataForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ["city", "street", "house", "apartment", "phone"]
+        fields = ["user_name", "city", "street", "house", "apartment"]
 
 
 class NewStaffForm(UserCreationForm):
@@ -54,8 +54,23 @@ class PriceForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.TextInput(attrs={'class': 'form-control'})
         }
-    
+
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
         empty_label='Виберіть категорію'
     )
+
+
+class CallBackForm(ModelForm):
+    class Meta:
+        model = CallBack
+        fields = ["name", "phone"]
+
+
+class FeedbackForm(ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['rating', 'comment']
+        widgets = {
+            'rating': forms.RadioSelect(attrs={'class': 'form-check-input'})
+        }

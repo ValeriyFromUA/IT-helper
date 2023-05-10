@@ -8,3 +8,4 @@ class StaffMainView(ListView):
     model = Task
     context_object_name = "tasks"
     ordering = ["-id"]
+    paginate_by = 20

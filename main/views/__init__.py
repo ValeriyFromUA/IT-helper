@@ -15,3 +15,6 @@ from .user_reg import RegistrationView
 from .confirmation_staff import ConfirmStaffView
 from .price import PriceView
 from .new_price import NewPriceView
+from .callback import CallBackView
+from .feedback import FeedbackView
+from .comments import CommentsView
