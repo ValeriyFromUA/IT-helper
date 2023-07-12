@@ -4,7 +4,7 @@
 ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-
+# APP In development...
 # IT-helper
 
 This Django application is designed to facilitate the work of an on-site service for setting up digital equipment. With its help, the user can submit service requests and track their status, while employees are provided with information on new requests and statistics regarding the quality of services provided.
